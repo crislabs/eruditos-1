@@ -1,0 +1,16 @@
+---
+import { SITE } from "@config";
+import getPageNumbers from "@utils/getPageNumbers";
+import getSortedPosts from "@utils/getSortedPosts";
+import { CollectionEntry, getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+// console.log(posts)
+const sortedPosts = getSortedPosts(posts);
+
+const totalPages = getPageNumbers(sortedPosts.length);
+
+const paginatedPosts = sortedPosts.slice(0, SITE.postPerPage);
+---
+
+<h1>Hola Mundo</h1>
